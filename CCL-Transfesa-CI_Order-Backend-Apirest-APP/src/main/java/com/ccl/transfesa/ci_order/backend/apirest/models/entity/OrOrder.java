@@ -6,23 +6,19 @@
 package com.ccl.transfesa.ci_order.backend.apirest.models.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import lombok.Data;
+import lombok.NonNull;
 
 /**
  *
@@ -30,17 +26,21 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "OR_ORDER", catalog = "", schema = "INTFS")
+@Data
+/*
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OrOrder.findAll", query = "SELECT o FROM OrOrder o")})
+*/    
 public class OrOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @Basic(optional = false)
+    //@Basic(optional = false)
+    @NonNull
     @Column(name = "ID_ORDER")
-    private BigDecimal idOrder;
+    private Long idOrder;
     @Column(name = "SENDERCODE")
     private String sendercode;
     @Column(name = "RECEIVERCODE")
@@ -110,7 +110,7 @@ public class OrOrder implements Serializable {
 
     public OrOrder() {
     }
-
+    /*
     public OrOrder(BigDecimal idOrder) {
         this.idOrder = idOrder;
     }
@@ -406,5 +406,5 @@ public class OrOrder implements Serializable {
     public String toString() {
         return "com.ccl.transfesa.ci_orden.OrOrder[ idOrder=" + idOrder + " ]";
     }
-    
+    */
 }

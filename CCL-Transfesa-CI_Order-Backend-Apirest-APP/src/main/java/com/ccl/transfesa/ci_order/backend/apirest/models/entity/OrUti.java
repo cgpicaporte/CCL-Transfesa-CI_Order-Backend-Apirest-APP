@@ -8,18 +8,15 @@ package com.ccl.transfesa.ci_order.backend.apirest.models.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import lombok.Data;
+import lombok.NonNull;
 
 /**
  *
@@ -27,17 +24,21 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "OR_UTI", catalog = "", schema = "INTFS")
+@Data
+/*
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OrUti.findAll", query = "SELECT o FROM OrUti o")})
+*/    
 public class OrUti implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @Basic(optional = false)
+    //@Basic(optional = false)
+    @NonNull
     @Column(name = "ID_UTI")
-    private BigDecimal idUti;
+    private Long idUti;
     @Column(name = "ORDERPOSNR")
     private Short orderposnr;
     @Column(name = "UTITYPE")
@@ -146,7 +147,7 @@ public class OrUti implements Serializable {
 
     public OrUti() {
     }
-
+    /*
     public OrUti(BigDecimal idUti) {
         this.idUti = idUti;
     }
@@ -600,5 +601,5 @@ public class OrUti implements Serializable {
     public String toString() {
         return "com.ccl.transfesa.ci_orden.OrUti[ idUti=" + idUti + " ]";
     }
-    
+    */
 }

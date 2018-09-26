@@ -1,6 +1,5 @@
 package com.ccl.transfesa.ci_order.backend.apirest.models.service;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,7 @@ public class IOrCiOrderServiceImpl implements IOrCiOrderService {
 	}
 
 	@Override
-	public OrCiOrder findById(BigDecimal id) {
+	public OrCiOrder findById(Long id) {
 		// TODO Auto-generated method stub
 		return orCiOrderDao.findById(id).orElse(null);
 	}
@@ -45,7 +44,7 @@ public class IOrCiOrderServiceImpl implements IOrCiOrderService {
 	}
 
 	@Override
-	public void delete(BigDecimal id) {
+	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		orCiOrderDao.deleteById(id);
 

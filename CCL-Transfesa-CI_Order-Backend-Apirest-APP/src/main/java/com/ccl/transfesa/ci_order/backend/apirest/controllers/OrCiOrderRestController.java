@@ -1,7 +1,6 @@
 package com.ccl.transfesa.ci_order.backend.apirest.controllers;
 
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,7 @@ public class OrCiOrderRestController {
 	}
 	
 	@GetMapping("/orciorders/{id}")
-	public OrCiOrder show(@PathVariable BigDecimal id) {
+	public OrCiOrder show(@PathVariable Long id) {
 		return orCiOrderService.findById(id);
 	}
 	
@@ -65,7 +64,7 @@ public class OrCiOrderRestController {
 	
 	@PutMapping("/orciorders/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public OrCiOrder update(@RequestBody OrCiOrder orCiOrder, @PathVariable BigDecimal id) {
+	public OrCiOrder update(@RequestBody OrCiOrder orCiOrder, @PathVariable Long id) {
 		
 		OrCiOrder orCiOrderActual= orCiOrderService.findById(id);
 		orCiOrderActual.setInterchangeid(orCiOrder.getInterchangeid());
@@ -82,7 +81,7 @@ public class OrCiOrderRestController {
 	
 	@DeleteMapping("/orciorders/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable BigDecimal id) {
+	public void delete(@PathVariable Long id) {
 		orCiOrderService.delete(id);
 	}
 

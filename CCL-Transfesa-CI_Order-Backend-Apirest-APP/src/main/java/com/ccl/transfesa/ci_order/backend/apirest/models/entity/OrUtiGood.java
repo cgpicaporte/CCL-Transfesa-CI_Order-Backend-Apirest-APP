@@ -7,16 +7,14 @@ package com.ccl.transfesa.ci_order.backend.apirest.models.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Data;
+import lombok.NonNull;
 
 /**
  *
@@ -24,17 +22,21 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "OR_UTI_GOOD", catalog = "", schema = "INTFS")
+@Data
+/*
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OrUtiGood.findAll", query = "SELECT o FROM OrUtiGood o")})
+*/    
 public class OrUtiGood implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @Basic(optional = false)
+    //@Basic(optional = false)
+    @NonNull
     @Column(name = "ID_UTI_GOOD")
-    private BigDecimal idUtiGood;
+    private Long idUtiGood;
     @Column(name = "NATUREOFPACKING")
     private String natureofpacking;
     @Column(name = "NUMBEROFPACKAGES")
@@ -75,7 +77,7 @@ public class OrUtiGood implements Serializable {
 
     public OrUtiGood() {
     }
-
+    /*
     public OrUtiGood(BigDecimal idUtiGood) {
         this.idUtiGood = idUtiGood;
     }
@@ -256,5 +258,5 @@ public class OrUtiGood implements Serializable {
     public String toString() {
         return "com.ccl.transfesa.ci_orden.OrUtiGood[ idUtiGood=" + idUtiGood + " ]";
     }
-    
+    */
 }

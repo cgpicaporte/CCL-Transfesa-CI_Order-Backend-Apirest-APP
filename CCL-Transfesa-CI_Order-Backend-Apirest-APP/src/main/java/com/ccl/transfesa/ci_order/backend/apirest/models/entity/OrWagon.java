@@ -8,18 +8,15 @@ package com.ccl.transfesa.ci_order.backend.apirest.models.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import lombok.Data;
+import lombok.NonNull;
 
 /**
  *
@@ -27,17 +24,21 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "OR_WAGON", catalog = "", schema = "INTFS")
-@XmlRootElement
+@Data
+
+/*@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "OrWagon.findAll", query = "SELECT o FROM OrWagon o")})
+*/    
 public class OrWagon implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @Basic(optional = false)
+    //@Basic(optional = false)
+    @NonNull
     @Column(name = "ID_WAGON")
-    private BigDecimal idWagon;
+    private Long idWagon;
     @Column(name = "ORDERPOSNR")
     private Short orderposnr;
     @Column(name = "WAGONNUMBER")
@@ -98,7 +99,7 @@ public class OrWagon implements Serializable {
 
     public OrWagon() {
     }
-
+    /*
     public OrWagon(BigDecimal idWagon) {
         this.idWagon = idWagon;
     }
@@ -360,5 +361,5 @@ public class OrWagon implements Serializable {
     public String toString() {
         return "com.ccl.transfesa.ci_orden.OrWagon[ idWagon=" + idWagon + " ]";
     }
-    
+    */
 }

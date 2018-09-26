@@ -6,7 +6,6 @@
 package com.ccl.transfesa.ci_order.backend.apirest.models.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import lombok.Data;
 import lombok.NonNull;
 
 /**
@@ -27,6 +27,7 @@ import lombok.NonNull;
  */
 @Entity
 @Table(name = "OR_CI_ORDER", catalog = "", schema = "INTFS")
+@Data
 public class OrCiOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,7 +37,7 @@ public class OrCiOrder implements Serializable {
 	@SequenceGenerator(sequenceName = "ORSCI_ORDER", initialValue = 1, allocationSize = 1, name = "ORSCI_ORDER")
     @Column(name = "ID_CI_ORDER")
     @NonNull
-    private BigDecimal idCiOrder;
+    private Long idCiOrder;
     @Column(name = "INTERCHANGEID")
     private String interchangeid;
     @Column(name = "SENDERIDENTIFICATION")
@@ -67,11 +68,10 @@ public class OrCiOrder implements Serializable {
     /*
     @OneToMany(mappedBy = "idCiOrder")
     private List<OrOrder> orOrderList;
-	*/
-    
+	*/    
     public OrCiOrder() {
     }
-
+    /*
     public OrCiOrder(BigDecimal idCiOrder) {
         this.idCiOrder = idCiOrder;
     }
@@ -158,7 +158,7 @@ public class OrCiOrder implements Serializable {
         this.orOrderList = orOrderList;
     }
 	*/
-    
+    /*
     @Override
     public int hashCode() {
         int hash = 0;
@@ -183,5 +183,5 @@ public class OrCiOrder implements Serializable {
     public String toString() {
         return "com.ccl.transfesa.ci_orden.OrCiOrder[ idCiOrder=" + idCiOrder + " ]";
     }
-    
+    */
 }
