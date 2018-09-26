@@ -17,6 +17,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.NonNull;
@@ -37,7 +38,7 @@ public class OrCiOrder implements Serializable {
 	@SequenceGenerator(sequenceName = "ORSCI_ORDER", initialValue = 1, allocationSize = 1, name = "ORSCI_ORDER")
     @Column(name = "ID_CI_ORDER")
     @NonNull
-    private Long idCiOrder;
+    private Long id;
     @Column(name = "INTERCHANGEID")
     private String interchangeid;
     @Column(name = "SENDERIDENTIFICATION")
@@ -45,6 +46,7 @@ public class OrCiOrder implements Serializable {
     @Column(name = "RECEIVERIDENTIFICATION")
     private String receiveridentification;
     
+    //@JsonIgnore
     @Column(name = "MSGPREPARATIONDATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date msgpreparationdate;
