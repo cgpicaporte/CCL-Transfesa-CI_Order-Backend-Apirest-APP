@@ -38,7 +38,7 @@ public class OrCiOrder implements Serializable {
 	@SequenceGenerator(sequenceName = "ORSCI_ORDER", initialValue = 1, allocationSize = 1, name = "ORSCI_ORDER")
     @Column(name = "ID_CI_ORDER")
     @NonNull
-    private Long id;
+    private Long idCiOrder;
     @Column(name = "INTERCHANGEID")
     private String interchangeid;
     @Column(name = "SENDERIDENTIFICATION")
