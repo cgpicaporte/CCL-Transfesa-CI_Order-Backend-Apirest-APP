@@ -3,6 +3,7 @@ package com.ccl.transfesa.ci_order.backend.apirest.controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -32,7 +33,7 @@ public class OrCiOrderRestController {
 	
 	@Autowired
 	private IOrCiOrderService orCiOrderService;
-	
+		
 	@GetMapping("/orciordersall")
 	public List<OrCiOrder> index(){
 		return orCiOrderService.findAll();
@@ -40,14 +41,14 @@ public class OrCiOrderRestController {
 	
 	@GetMapping(value = "/orciordersxml")
 	public @ResponseBody OrCiOrderList listarXMLRest(@RequestParam(name = "page", defaultValue = "0") int page, @RequestParam(name = "size", defaultValue = "10") int size) {
-		Pageable pageRequest = PageRequest.of(page, size);
+		Pageable pageRequest = PageRequest.of(page, size, orCiOrderService.sortByIdDesc());
 		Page<OrCiOrder> orCiOrders = orCiOrderService.findAll(pageRequest);
 		return new OrCiOrderList(orCiOrders.getContent());
 	}
 	
 	@GetMapping(value = "/orciorders")
-	public @ResponseBody List<OrCiOrder> listarXMLRestJson(@RequestParam(name = "page", defaultValue = "0") int page, @RequestParam(name = "size", defaultValue = "10") int size) {
-		Pageable pageRequest = PageRequest.of(page, size);
+	public @ResponseBody List<OrCiOrder> listarXMLRestJson(@RequestParam(name = "page", defaultValue = "0") int page, @RequestParam(name = "size", defaultValue = "1000") int size) {
+		Pageable pageRequest = PageRequest.of(page, size, orCiOrderService.sortByIdDesc());
 		Page<OrCiOrder> orCiOrders = orCiOrderService.findAll(pageRequest);
 		return orCiOrders.getContent();
 	}

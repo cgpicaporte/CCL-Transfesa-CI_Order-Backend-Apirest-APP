@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,14 +17,13 @@ public class IOrCiOrderServiceImpl implements IOrCiOrderService {
 
 	@Autowired
 	private IOrCiOrderDao orCiOrderDao;
-	
+
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<OrCiOrder> findAll() {
-		// TODO Auto-generated method stub
-		return (List<OrCiOrder>) orCiOrderDao.findAll();
+		//return (List<OrCiOrder>) orCiOrderDao.findAll();
+		return (List<OrCiOrder>) orCiOrderDao.findAll(sortByIdDesc());
 	}
-	
 
 	@Override
 	public Page<OrCiOrder> findAll(Pageable pageable) {
@@ -49,5 +49,22 @@ public class IOrCiOrderServiceImpl implements IOrCiOrderService {
 		orCiOrderDao.deleteById(id);
 
 	}
+
+	@Override
+	public List<OrCiOrder> findAllWithOrCiOrderOrderBy(Sort sort) {
+
+		String[] arrayOrdenacion = new String[] { "idCiOrder"/*, "campo2", "campo3", "campo4"*/ };
+		return orCiOrderDao.findAllWithOrCiOrderOrderBy(Sort.by(arrayOrdenacion));
+	}
+
+	public Sort sortByIdDesc() {
+		return new Sort(Sort.Direction.DESC, "idCiOrder");
+	}
+
+	public Sort sortByIdAsc() {
+		return new Sort(Sort.Direction.ASC, "idCiOrder");
+	}
+	
+	
 
 }
